@@ -42,7 +42,6 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('app/build'));
-
 const PORT = process.env.PORT || 8080;
 
 const server = http.createServer(app);
