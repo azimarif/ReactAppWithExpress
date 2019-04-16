@@ -7,7 +7,6 @@ const app = express();
 const connection = mysql.createConnection({
   host:'us-cdbr-iron-east-02.cleardb.net',
   user:'b802ac9efcda40',
-  port:3303,
   password:'c1973dcf',
   database='heroku_8c2951a2b3c6ac6'
 });
@@ -25,8 +24,14 @@ app.post('/hello', (req, res) => {
       if(err) {
         connection.query("Create table tblMovie1 (id int, name varchar(50))");
       }
-      console.log(err);
-      res.send(result);
+      connection.query('select * from tblMovie1', (e,r,f)=>{
+        let data= {}
+        if(e) {
+          res.send(data);
+        }
+        res.send(r);
+
+      })
     });
   });
 });
