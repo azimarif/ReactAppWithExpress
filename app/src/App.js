@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   renderClick = () => {
-    fetch('https://express-for-react.herokuapp.com/hello')
+    fetch('/hello')
       .then(res => res.text())
       .then(passwords => this.setState({ passwords }));
   };
