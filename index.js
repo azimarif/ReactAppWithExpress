@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   host:'us-cdbr-iron-east-02.cleardb.net',
   user:'b802ac9efcda40',
   password:'c1973dcf',
-  database='heroku_8c2951a2b3c6ac6'
+  database:'heroku_8c2951a2b3c6ac6'
 });
 
 
