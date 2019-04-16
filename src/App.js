@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state ={
+      passwords:null
+    }
+    this.renderClick = this.renderClick.bind(this);
+  }
+
+  renderClick = () => {
+    fetch('https://express-for-react.herokuapp.com/hello')
+      .then(res => res.text())
+      .then(passwords => this.setState({ passwords }));
+  };
+
   render() {
+    const value = this.state.passwords;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='App'>Hello {value}
+        <button onClick={this.renderClick}  >Click</button>
       </div>
     );
   }
