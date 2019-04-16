@@ -25,8 +25,11 @@ let name= document.getElementById('myname').value;
 
   render() {
     const value = this.state.passwords;
+    if(!value) {
+      value = ''
+    }
     return (
-      <div className='App'>Hello
+      <div className='App'>Hello {value}
       Name: 
       <input id='myname' type="text" name="myname"></input>
         <button onClick={this.renderClick.bind(this)}  >Click</button>
