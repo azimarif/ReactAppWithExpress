@@ -10,8 +10,15 @@ class App extends Component {
     this.renderClick = this.renderClick.bind(this);
   }
 
-  renderClick = () => {
-    fetch('/hello')
+  renderClick = (event) => {
+    // event.preventDefault();
+let name= document.getElementById('myname').value;
+    console.log();
+    fetch('/hello', {
+      method:'POST',
+      headers: { "Content-Type": "application/json"},
+      body:JSON.stringify( {name})
+    })
       .then(res => res.text())
       .then(passwords => this.setState({ passwords }));
   };
@@ -19,8 +26,10 @@ class App extends Component {
   render() {
     const value = this.state.passwords;
     return (
-      <div className='App'>Hello {value}
-        <button onClick={this.renderClick}  >Click</button>
+      <div className='App'>Hello
+      Name: 
+      <input id='myname' type="text" name="myname"></input>
+        <button onClick={this.renderClick.bind(this)}  >Click</button>
       </div>
     );
   }
