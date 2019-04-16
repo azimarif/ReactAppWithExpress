@@ -24,7 +24,7 @@ let name= document.getElementById('myname').value;
   };
 
   render() {
-    const value = this.state.passwords;
+    let value = this.state.passwords;
     if(!value) {
       value = ''
     }
