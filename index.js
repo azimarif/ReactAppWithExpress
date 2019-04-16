@@ -3,12 +3,15 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
-
-app.get('/hello', (req, res)=> {
+app.get('/hello', (req, res) => {
   res.send(' world');
-  res.end();
 });
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/app/build/index.html');
+});
+
+app.use(express.static('app/build'));
 
 const PORT = process.env.PORT || 8080;
 
